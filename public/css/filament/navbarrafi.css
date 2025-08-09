@@ -1,0 +1,231 @@
+@import url('popup-lomba.css');
+
+/* === RESET & BASE === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fafbfc; color: #222; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* === NAVBAR CUSTOM === */
+.navbar-custom { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; width: 100%; }
+.navbar-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0.3rem 2vw; }
+.navbar-logo { display: flex; align-items: center; gap: 0.6rem; font-weight: bold; font-size: 1.1rem; color: #222; }
+.logo-img { height: 38px; width: auto; object-fit: contain; }
+.logo-text { font-size: 1.1rem; font-weight: 700; }
+
+.navbar-menu { display: flex; align-items: center; gap: 0.5rem; list-style: none; transition: max-height 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s; }
+.navbar-menu li { }
+.navbar-menu .nav-link { color: #222; padding: 0.7rem 1.2rem; font-size: 1rem; border-radius: 3px; transition: color 0.2s, background 0.2s; display: block; position: relative; }
+.navbar-menu .nav-link.active,
+.navbar-menu .nav-link:focus,
+.navbar-menu .nav-link:hover { color: #ff6600; background: #f9f9f9; }
+.navbar-menu .nav-link.active::after { content: ''; display: block; height: 2px; background: #ff6600; width: 80%; margin: 0.2rem auto 0; border-radius: 2px; }
+
+.navbar-toggle { display: none; flex-direction: column; gap: 4px; width: 34px; height: 34px; background: none; border: none; cursor: pointer; align-items: center; justify-content: center; }
+.navbar-toggle .bar { display: block; width: 24px; height: 3px; background: #222; border-radius: 2px; transition: all 0.3s; }
+
+/* Hamburger animasi */
+.navbar-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar-toggle.open .bar:nth-child(2) { opacity: 0; }
+.navbar-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu (hanya aktif di <=900px) */
+@media (max-width: 900px) {
+  .navbar-container { flex-wrap: wrap; padding: 0.3rem 4vw; }
+  .navbar-menu {
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 99;
+  }
+  .navbar-menu.open {
+    max-height: 400px;
+    opacity: 1;
+    padding: 0.7rem 0 0.7rem 0;
+    transition: max-height 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+  }
+  .navbar-menu li { width: 100%; }
+  .navbar-menu .nav-link { padding: 0.8rem 1.5rem; border-radius: 0; }
+  .navbar-toggle { display: flex; }
+}
+
+/* Desktop menu (selalu horizontal, hamburger disembunyikan) */
+@media (min-width: 901px) {
+  .navbar-menu {
+    flex-direction: row;
+    position: static;
+    background: none;
+    max-height: none;
+    opacity: 1;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+  }
+  .navbar-menu li { width: auto; }
+  .navbar-toggle { display: none !important; }
+}
+
+
+@import url('popup-lomba.css');
+
+/* === HERO SECTION === */
+.hero { position: relative; min-height: 50vh; }
+.hero-bg { position: relative; width: 100%; height: 350px; overflow: hidden; }
+.hero-bg img { width: 100%; height: 350px; object-fit: cover; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(30,20,10,0.45); z-index: 1; }
+.hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: #fff; text-align: center; z-index: 2; }
+.hero-content h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.7rem; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+.btn-hero { background: #ff6600; color: #fff; padding: 0.7rem 2.2rem; border-radius: 30px; font-weight: bold; font-size: 1rem; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: background 0.2s; }
+.btn-hero:hover { background: #d94d00; }
+
+@media (max-width: 600px) {
+  .hero-bg, .hero-bg img { height: 200px; }
+  .hero-content h1 { font-size: 1.1rem; }
+  .hero-content p { font-size: 0.95rem; }
+}
+
+/* === SECTION === */
+.section { padding: 2.5rem 0 1.5rem 0; }
+.section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.2rem; color: #ff6600; letter-spacing: 0.5px; }
+
+/* === SLIDER === */
+.simple-slider { display: flex; align-items: center; gap: 0.5rem; }
+.slider-container { display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 1rem; padding-bottom: 0.5rem; }
+.slider-card { background: #fff; border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,0.07); min-width: 220px; max-width: 220px; flex: 0 0 220px; transition: transform 0.2s; }
+.slider-card img { border-radius: 10px 10px 0 0; height: 120px; object-fit: cover; }
+.card-body { padding: 0.7rem; }
+.card-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.2rem; }
+.card-date { font-size: 0.92rem; color: #ff6600; }
+.slider-prev, .slider-next { background: #ff6600; color: #fff; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; }
+.slider-prev:hover, .slider-next:hover { background: #d94d00; }
+
+@media (max-width: 600px) {
+  .slider-card { min-width: 160px; max-width: 160px; }
+  .slider-card img { height: 80px; }
+}
+
+/* === ARTIKEL === */
+.artikel-row { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.artikel-card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); flex: 1 1 220px; max-width: 320px; display: flex; flex-direction: column; }
+.artikel-card img { border-radius: 10px 10px 0 0; height: 120px; object-fit: cover; }
+.artikel-body { padding: 0.8rem; flex: 1; display: flex; flex-direction: column; }
+.artikel-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.2rem; color: #222; }
+.artikel-desc { font-size: 0.97rem; margin-bottom: 0.6rem; color: #444; }
+.artikel-link { color: #ff6600; font-weight: 500; font-size: 0.98rem; align-self: flex-end; }
+.artikel-link:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .artikel-row { flex-direction: column; gap: 1rem; align-items: stretch; }
+  .artikel-card { max-width: 100%; }
+}
+
+/* === FOOTER === */
+footer { background: #222; color: #fff; padding-top: 2rem; font-size: 1rem; }
+footer h5 { color: #ff6600; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+footer ul { list-style: none; padding: 0; margin: 0; }
+footer a.text-white, footer a { color: #fff; transition: color 0.2s; }
+footer a.text-white:hover, footer a:hover { color: #ff6600; }
+footer .row { display: flex; flex-wrap: wrap; gap: 1.5rem 0; }
+footer .col-md-4, footer .col-md-8, footer .col-md-4.text-md-end { flex: 1 1 200px; }
+footer img { border-radius: 8px; }
+footer small { color: #ccc; }
+footer .text-md-end { text-align: right; }
+@media (max-width: 700px) {
+  footer .row { flex-direction: column; }
+  footer .text-md-end { text-align: left; margin-top: 1rem; }
+}
+
+/* === PROFIL PAGE === */
+.profil-wrapper { display: flex; gap: 2rem; max-width: 1200px; margin: 2rem auto; padding: 0 2vw; }
+.profil-sidebar { width: 220px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 1.3rem 0.7rem; }
+.profil-sidebar ul { list-style: none; }
+.profil-sidebar li { padding: 0.8rem 1rem; border-radius: 6px; color: #222; font-weight: 500; margin-bottom: 0.2rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.profil-sidebar li.active, .profil-sidebar li:hover { background: #ff6600; color: #fff; }
+.profil-content { flex: 1; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 2rem; }
+.profil-card { display: flex; gap: 2rem; align-items: center; }
+.profil-img img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; }
+.profil-text h3 { color: #ff6600; margin-bottom: 0.8rem; }
+@media (max-width: 900px) {
+  .profil-wrapper { flex-direction: column; gap: 1.2rem; }
+  .profil-sidebar { width: 100%; display: flex; overflow-x: auto; border-radius: 8px; box-shadow: none; padding: 0.7rem 0.3rem; }
+  .profil-sidebar ul { display: flex; gap: 0.3rem; }
+  .profil-sidebar li { min-width: 110px; text-align: center; font-size: 0.97rem; }
+  .profil-content { padding: 1.2rem; }
+  .profil-card { flex-direction: column; gap: 1rem; align-items: flex-start; }
+}
+
+/* === INFORMASI PAGE === */
+.info-section { max-width: 1200px; margin: 2rem auto; padding: 0 2vw; }
+.info-intro { margin-bottom: 1.2rem; color: #444; font-size: 1.05rem; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+.info-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.09); padding: 1rem; display: flex; flex-direction: column; align-items: flex-start; transition: transform 0.18s, box-shadow 0.18s; cursor: pointer; }
+.info-card img { width: 100%; border-radius: 10px; height: 130px; object-fit: cover; margin-bottom: 0.7rem; }
+.info-card .info-date { color: #ff6600; font-size: 0.96rem; margin-bottom: 0.4rem; }
+.info-card h3 { font-size: 1.09rem; font-weight: 600; color: #222; }
+.info-card.highlight { grid-row: span 2; grid-column: span 2; font-size: 1.1rem; }
+.info-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+@media (max-width: 900px) {
+  .info-section { padding: 0 1vw; }
+  .info-grid { grid-template-columns: 1fr; }
+  .info-card.highlight { grid-row: auto; grid-column: auto; }
+}
+
+/* === ACARA/KALENDER === */
+.calendar-container { display: flex; gap: 2.5rem; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+.calendar-box { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 1.5rem 1.2rem; min-width: 320px; }
+.calendar-table { width: 100%; border-collapse: collapse; text-align: center; margin-bottom: 0.5rem; }
+.calendar-table th, .calendar-table td { padding: 0.5rem; font-size: 1rem; }
+.calendar-table .today { background: #ff6600; color: #fff; border-radius: 50%; }
+.calendar-caption { text-align: center; color: #ff6600; font-weight: bold; }
+.calendar-list { flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+.calendar-event { background: #fff; border-left: 5px solid #ff6600; padding: 1rem; border-radius: 7px; box-shadow: 0 2px 7px rgba(0,0,0,0.06); font-size: 1rem; }
+@media (max-width: 900px) {
+  .calendar-container { flex-direction: column; gap: 1.2rem; }
+  .calendar-box { width: 100%; min-width: 0; }
+}
+
+/* === KONTAK === */
+.contact-section { max-width: 1200px; margin: 2rem auto; padding: 0 2vw; }
+.contact-grid { display: flex; gap: 2rem; flex-wrap: wrap; }
+.contact-info { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 1.2rem; margin-bottom: 0.5rem; }
+.contact-card h4 { color: #ff6600; margin-bottom: 0.5rem; }
+.contact-detail { font-size: 0.99rem; color: #333; }
+.contact-form { flex: 2; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-form form { display: flex; flex-direction: column; gap: 0.7rem; }
+.contact-form input, .contact-form textarea { border: 1px solid #eee; border-radius: 6px; padding: 0.7rem; font-size: 1rem; }
+.contact-form textarea { min-height: 80px; resize: vertical; }
+.contact-form button { align-self: flex-end; }
+.contact-jam, .contact-lokasi { background: #f7f7f7; border-radius: 8px; padding: 0.9rem 1rem; margin-bottom: 0.5rem; }
+@media (max-width: 900px) {
+  .contact-grid { flex-direction: column; gap: 1.2rem; }
+  .contact-form { padding: 1rem; }
+}
+
+/* === ANIMASI KARTU & SIDEBAR === */
+.slider-card, .artikel-card, .info-card, .calendar-event, .contact-card {
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.slider-card:hover, .artikel-card:hover, .info-card:hover, .calendar-event:hover, .contact-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+}
+.profil-sidebar li { transition: background 0.2s, color 0.2s, transform 0.16s; }
+.profil-sidebar li:hover { transform: scale(1.05); }
+
+/* === UTILITIES === */
+.mt-5 { margin-top: 3rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.pt-5 { padding-top: 2.5rem !important; }
+.pb-3 { padding-bottom: 1.2rem !important; }

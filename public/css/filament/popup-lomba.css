@@ -1,0 +1,121 @@
+/* Popup Lomba Modern */
+.popup-lomba {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    animation: popupIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  }
+  .popup-lomba-content {
+    background: linear-gradient(135deg, #ff5304 0%, hsl(0, 0%, 100%) 100%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 2px 10px rgba(160, 60, 180, 0.12);
+    border-radius: 18px;
+    border: 2.5px solid #fff;
+    padding: 1.1rem 0.8rem 1rem 0.8rem;
+    min-width: 200px;
+    max-width: 240px;
+    color: #222;
+    position: relative;
+    text-align: center;
+    transform: translateY(40px) scale(0.97);
+    opacity: 0;
+    animation: popupContentIn 0.8s 0.1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    backdrop-filter: blur(8px) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
+  }
+  .popup-lomba-content::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.09);
+  }
+  .popup-lomba-btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.55rem 1.1rem;
+    border-radius: 15px;
+    font-size: 0.98rem;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 12px rgba(255,92,151,0.13);
+  }
+  .popup-lomba-btn:hover {
+    background: #ffffff;
+    transform: scale(1.07) translateY(-2px);
+    box-shadow: 0 4px 18px rgba(255,92,151,0.22);
+  }
+  
+  .popup-lomba-draginfo {
+    font-size: 0.7rem;
+    color: #444;
+    margin-bottom: 0.3rem;
+    font-style: italic;
+  }
+  
+  .popup-lomba-img {
+    width: 34px; height: 34px;
+    object-fit: contain;
+    margin-bottom: 0.4rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    background: #fff;
+  }
+  .popup-lomba-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+  }
+  .popup-lomba-desc {
+    font-size: 0.97rem;
+    margin-bottom: 1.1rem;
+    color: #222;
+  }
+  .popup-lomba-btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border-radius: 18px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(255,92,151,0.13);
+  }
+  .popup-lomba-btn:hover {
+    background: #929292;
+  }
+  .popup-lomba-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 2;
+  }
+  .popup-lomba-close:hover { color: #ff3370; }
+  @keyframes popupIn {
+    0% { opacity: 0; transform: translateY(80px) scale(0.9); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes popupContentIn {
+    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (max-width: 600px) {
+    .popup-lomba { right: 10px; bottom: 10px; }
+    .popup-lomba-content { min-width: 90vw; max-width: 98vw; padding: 1.2rem 0.5rem 1.2rem 0.5rem; }
+    .popup-lomba-img { width: 48px; height: 48px; }
+  }
+  
